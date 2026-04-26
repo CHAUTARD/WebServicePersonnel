@@ -12,6 +12,8 @@ if ($nbUsers > 0) {
 }
 
 $error = null;
+$usernameMaxLength = 50;
+$passwordMaxLength = 72;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     verifyCsrf();
@@ -21,8 +23,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($username === '' || strlen($username) < 3) {
         $error = 'Le nom d\'utilisateur doit contenir au moins 3 caractères.';
+    } elseif (strlen($username) > $usernameMaxLength) {
+        $error = 'Le nom d\'utilisateur ne doit pas dépasser ' . $usernameMaxLength . ' caractères.';
     } elseif (strlen($password) < 8) {
         $error = 'Le mot de passe doit contenir au moins 8 caractères.';
+    } elseif (strlen($password) > $passwordMaxLength) {
+        $error = 'Le mot de passe ne doit pas dépasser ' . $passwordMaxLength . ' caractères.';
     } else {
         $hash = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $pdo->prepare('INSERT INTO admin_users (username, password_hash, actif) VALUES (:u, :p, 1)');
@@ -49,29 +55,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .body{padding:12px}
         p{margin:0 0 10px;color:#61758a;font-size:12px}
         label{display:block;margin-top:10px;font-size:12px;color:#586d83;font-weight:700}
-        input{width:100%;padding:8px;border:1px solid #aebdce;background:#fff;margin-top:4px}
+        input{width:100%;padding:8px;border:1px solid #aebdce;background:#fff;margin-top:4px;box-sizing:border-box}
+        .password-wrap{display:flex;gap:8px;align-items:center}
+        .password-wrap input{flex:1}
         button{margin-top:14px;background:linear-gradient(180deg,#3d8bd1,#1e6eb8);color:#fff;border:1px solid #16538b;padding:7px 12px;font-weight:700;cursor:pointer}
+        .btn-toggle{margin-top:4px;background:linear-gradient(180deg,#f6f8fb,#dce6f2);color:#1c3e62;border:1px solid #9fb3ca}
         .err{background:#fde8e8;border:1px solid #efb9b9;color:#922d2d;padding:8px;margin-bottom:10px}
     </style>
 </head>
 <body>
-<div class="top">Administration WebServices</div>
+<div class="top">Administration WebServices Personnel</div>
 <div class="wrap">
 <div class="card">
-    <div class="head">Creation du premier administrateur</div>
+    <div class="head">Création du premier administrateur</div>
     <div class="body">
-        <p>Cette etape initialise l'acces au back-office.</p>
+        <p>Cette étape initialise l'accès au back-office.</p>
         <?php if ($error): ?><div class="err"><?= e($error) ?></div><?php endif; ?>
         <form method="post">
             <input type="hidden" name="csrf_token" value="<?= e(csrfToken()) ?>">
             <label>Nom d'utilisateur</label>
-            <input name="username" required>
+            <input name="username" required minlength="3" maxlength="<?= (int)$usernameMaxLength ?>" autocomplete="username">
             <label>Mot de passe</label>
-            <input name="password" type="password" required>
-            <button type="submit">Creer le compte</button>
+            <div class="password-wrap">
+                <input id="password" name="password" type="password" required minlength="8" maxlength="<?= (int)$passwordMaxLength ?>" autocomplete="new-password">
+                <button id="togglePassword" class="btn-toggle" type="button" aria-controls="password" aria-label="Afficher le mot de passe">Afficher</button>
+            </div>
+            <button type="submit">Créer le compte</button>
         </form>
     </div>
 </div>
 </div>
+<script>
+const toggleButton = document.getElementById('togglePassword');
+const passwordInput = document.getElementById('password');
+
+if (toggleButton && passwordInput) {
+    toggleButton.addEventListener('click', function () {
+        const isPassword = passwordInput.type === 'password';
+        passwordInput.type = isPassword ? 'text' : 'password';
+        toggleButton.textContent = isPassword ? 'Masquer' : 'Afficher';
+        toggleButton.setAttribute('aria-label', isPassword ? 'Masquer le mot de passe' : 'Afficher le mot de passe');
+    });
+}
+</script>
 </body>
 </html>

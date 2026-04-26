@@ -40,7 +40,8 @@ if (!function_exists('adminRenderHeader')) {
                 .content-wrap{max-width:1280px;margin:12px auto;padding:0 14px 20px}
                 .layout{display:flex;gap:12px;align-items:flex-start}
                 .sidebar{width:210px;position:sticky;top:10px;background:var(--panel);border:1px solid var(--border);box-shadow:inset 0 1px 0 #fff}
-                .sidebar h3{margin:0;padding:8px 10px;font-size:12px;text-transform:uppercase;color:#1c446a;border-bottom:1px solid var(--border);background:linear-gradient(180deg,#fdfefe,#e9f0f8)}
+                .sidebar h3{margin:0;padding:8px 10px;font-size:12px;color:#1c446a;border-bottom:1px solid var(--border);background:linear-gradient(180deg,#fdfefe,#e9f0f8);display:flex;align-items:center;gap:6px}
+                .icon-cartouche{display:inline-block;width:14px;height:14px;vertical-align:-2px;background-size:14px 14px;background-repeat:no-repeat;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Cellipse cx='4.2' cy='4.2' rx='2.1' ry='2.1' fill='%238ab0d3'/%3E%3Cellipse cx='9.8' cy='4.2' rx='2.1' ry='2.1' fill='%238ab0d3'/%3E%3Cpath d='M1.5 11.8c.4-2 1.6-3 2.7-3h.2c1.1 0 2.3 1 2.7 3' fill='%23c8ddf0'/%3E%3Cpath d='M6.8 11.8c.4-2 1.6-3 2.7-3h.2c1.1 0 2.3 1 2.7 3' fill='%23c8ddf0'/%3E%3C/svg%3E")}
                 .sidebar a{display:block;padding:8px 10px;text-decoration:none;color:#214465;border-top:1px solid #e7edf4;font-size:12px}
                 .sidebar a:hover{background:#eef4fb}
                 .sidebar a.active{background:#dfe9f4;font-weight:700}
@@ -75,6 +76,10 @@ if (!function_exists('adminRenderHeader')) {
                 .icon-edit{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Cpath d='M2 10l1.5 1.5L10.8 4.2 9.3 2.7z' fill='%23d6a03a'/%3E%3Cpath d='M8.7 2.1l1.5-1.5 1.7 1.7-1.5 1.5z' fill='%238a6b2c'/%3E%3Cpath d='M2 12l2.8-.7L2.7 9.2z' fill='%236b7a86'/%3E%3C/svg%3E")}
                 .icon-del{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Ccircle cx='7' cy='7' r='6' fill='%23e5736d'/%3E%3Crect x='3' y='6' width='8' height='2' fill='white'/%3E%3C/svg%3E")}
                 .icon-table{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Crect x='1' y='2' width='12' height='10' fill='%23f4f8fc' stroke='%2388a9c6'/%3E%3Cpath d='M1 5h12M1 8h12M5 2v10M9 2v10' stroke='%23b1c7da'/%3E%3C/svg%3E")}
+                .icon-side-personnel{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Ccircle cx='7' cy='4' r='2.2' fill='%2387add0'/%3E%3Cpath d='M2.5 12c.5-2.4 2.1-3.8 4.5-3.8S11 9.6 11.5 12' fill='%23c7dcef'/%3E%3C/svg%3E")}
+                .icon-side-postes{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Crect x='2' y='2' width='10' height='3' fill='%2387add0'/%3E%3Crect x='2' y='6' width='10' height='3' fill='%23a9c4dd'/%3E%3Crect x='2' y='10' width='10' height='2' fill='%23c8dcef'/%3E%3C/svg%3E")}
+                .icon-side-motifs{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Crect x='2' y='1.8' width='10' height='10.2' rx='1' fill='%23eef5fc' stroke='%2387add0'/%3E%3Cpath d='M4 4.5h6M4 6.8h6M4 9.1h4' stroke='%235d84a9' stroke-width='1'/%3E%3C/svg%3E")}
+                .icon-side-conges{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Crect x='1.7' y='2.2' width='10.6' height='9.8' rx='1' fill='%23eef5fc' stroke='%2387add0'/%3E%3Cpath d='M1.7 5h10.6' stroke='%2387add0'/%3E%3Ccircle cx='5' cy='7.7' r='1' fill='%235d84a9'/%3E%3Ccircle cx='8' cy='7.7' r='1' fill='%235d84a9'/%3E%3Ccircle cx='11' cy='7.7' r='1' fill='%235d84a9'/%3E%3C/svg%3E")}
                 .toolbar-inline{margin-top:6px;color:#4f657b;font-size:12px}
                 .toolbar-inline a{color:var(--link);text-decoration:none;margin-right:8px}
                 .toolbar-inline a:hover{text-decoration:underline}
@@ -84,7 +89,7 @@ if (!function_exists('adminRenderHeader')) {
         <body>
         <div class="topbar">
             <div class="topbar-inner">
-                <div class="brand">Administration WebServices</div>
+                <div class="brand">Administration WebServices Personnel</div>
                 <div class="userline">
                     Connecte: <?= e((string)($_SESSION['admin_username'] ?? 'admin')) ?> |
                     <a href="logout.php">Deconnexion</a>
@@ -93,7 +98,7 @@ if (!function_exists('adminRenderHeader')) {
             <nav class="tabs" aria-label="navigation">
                 <?php foreach ($tabs as $key => $tab): ?>
                     <a class="tab <?= $active === $key ? 'active' : '' ?>" href="<?= e($tab['href']) ?>">
-                        <span class="icon <?= $key === 'personnel' ? 'icon-tab-structure' : (($key === 'motifs' || $key === 'postes') ? 'icon-tab-sql' : 'icon-tab-search') ?>"></span><?= e($tab['label']) ?>
+                        <span class="icon <?= $key === 'personnel' ? 'icon-side-personnel' : ($key === 'postes' ? 'icon-side-postes' : ($key === 'motifs' ? 'icon-side-motifs' : 'icon-side-conges')) ?>"></span><?= e($tab['label']) ?>
                     </a>
                 <?php endforeach; ?>
                 <a class="tab" href="#"><span class="icon icon-tab-export"></span>Exporter</a>
@@ -108,11 +113,11 @@ if (!function_exists('adminRenderHeader')) {
             <?php if ($flash): ?><div class="msg"><?= e($flash) ?></div><?php endif; ?>
             <div class="layout">
                 <aside class="sidebar">
-                    <h3>gestion_personnel</h3>
-                    <a class="<?= $active === 'personnel' ? 'active' : '' ?>" href="personnel.php"><span class="icon icon-table"></span>personnel</a>
-                    <a class="<?= $active === 'postes' ? 'active' : '' ?>" href="postes.php"><span class="icon icon-table"></span>postes</a>
-                    <a class="<?= $active === 'motifs' ? 'active' : '' ?>" href="motifs.php"><span class="icon icon-table"></span>motifs</a>
-                    <a class="<?= $active === 'conges' ? 'active' : '' ?>" href="conges.php"><span class="icon icon-table"></span>conges</a>
+                    <h3><span class="icon-cartouche" aria-hidden="true"></span>Gestion du personnel</h3>
+                    <a class="<?= $active === 'personnel' ? 'active' : '' ?>" href="personnel.php"><span class="icon icon-side-personnel"></span>Personnel</a>
+                    <a class="<?= $active === 'postes' ? 'active' : '' ?>" href="postes.php"><span class="icon icon-side-postes"></span>Postes</a>
+                    <a class="<?= $active === 'motifs' ? 'active' : '' ?>" href="motifs.php"><span class="icon icon-side-motifs"></span>Motifs</a>
+                    <a class="<?= $active === 'conges' ? 'active' : '' ?>" href="conges.php"><span class="icon icon-side-conges"></span>Conges</a>
                 </aside>
                 <div class="main-pane">
         <?php

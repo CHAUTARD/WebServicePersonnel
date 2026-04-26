@@ -98,7 +98,7 @@ $flags = JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | 
 adminRenderHeader('Service Conges', 'conges', $flash);
 ?>
 <section class="card">
-    <h2>Service Conges</h2>
+    <h2><span class="icon icon-side-conges"></span>Service Conges</h2>
     <div class="block">
         <form method="post" id="conge-form" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;align-items:end">
             <input type="hidden" name="csrf_token" value="<?= e(csrfToken()) ?>">
@@ -149,10 +149,11 @@ adminRenderHeader('Service Conges', 'conges', $flash);
 
             <div>
                 <label class="small"><input type="checkbox" name="pour_tous" id="conge-pour-tous"> Annuel pour tout le personnel actif</label>
-                <div class="form-actions">
-                    <button type="submit" id="conge-submit">Ajouter</button>
-                    <button type="button" id="conge-reset" style="display:none">Abandon</button>
-                </div>
+            </div>
+
+            <div class="form-actions" style="grid-column:1 / -1;margin-top:6px">
+                <button type="submit" id="conge-submit">Ajouter</button>
+                <button type="button" id="conge-reset" style="display:none">Abandon</button>
             </div>
         </form>
 

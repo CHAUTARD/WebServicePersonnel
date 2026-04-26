@@ -53,7 +53,7 @@ $flags = JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | 
 adminRenderHeader('Service Postes', 'postes', $flash);
 ?>
 <section class="card">
-    <h2>Service Postes</h2>
+    <h2><span class="icon icon-side-postes"></span>Service Postes</h2>
     <div class="block">
         <form method="post" id="poste-form">
             <input type="hidden" name="csrf_token" value="<?= e(csrfToken()) ?>">
